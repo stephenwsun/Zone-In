@@ -1,0 +1,22 @@
+﻿<div class="row navSpacer"></div>
+<div class="row navSpacer"></div>
+
+<div style="background-image: url('../../images/Street.jpg')" class="main" id="home-image" no-repeat></div>
+
+<div class="container col-md-offset-3">
+    <div class="container-fluid col-md-4" ng-repeat="category in controller.categories">
+        <div class="newsfeed-card text-center" id="category-box">
+            <h3 class="title title-modern"><a href="/category/details/{{category.id}}" style="color: whitesmoke">{{category.name}}</a></h3>
+            <div class="content">
+                <br />
+                <p style="text-align:center;"><img ng-src="../../images/Business Icons/vet.png" style="width: auto; height: 10%"></p>
+                <br />
+                <p class="description">Check out the {{category.name}} businesses that your neighbors are talking about</p>
+            </div>
+            <div class="filter"></div>
+            <div class="footer btn-center">
+                <button class="btn btn-neutral btn-round btn-fill">{{category.numBusinesses}} Recommended Businesses</button>
+            </div>
+        </div>
+    </div>
+</div>

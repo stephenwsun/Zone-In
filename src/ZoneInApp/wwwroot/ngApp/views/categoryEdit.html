@@ -1,0 +1,14 @@
+﻿<h1>Edit Category</h1>
+<form>
+    <div class="form-group">
+        <label class="sr-only">Category:</label>
+        <input type="text" ng-model="controller.category.name" />
+    </div>
+    <button class="btn btn-primary" ng-click="controller.saveCategory()">
+        <span class="glyphicon glyphicon-plus-sign"></span> Save
+    </button>
+
+    <button class="btn btn-default" ng-click="controller.cancelCategory()">
+        <span class="glyphicon glyphicon-remove-sign"> </span> Cancel
+    </button>
+</form>

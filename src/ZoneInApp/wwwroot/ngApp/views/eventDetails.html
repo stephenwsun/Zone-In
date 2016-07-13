@@ -1,0 +1,32 @@
+﻿<div class="row navSpacer"></div>
+<div class="row navSpacer"></div>
+
+<div style="background-image: url('../../images/Apartments.jpg')" class="main" id="home-image" no-repeat></div>
+
+<div class="container col-md-9 col-md-offset-3">
+    <div class="card" style="width: 45%; float:left; height: 70%">
+        <ng-map zoom="14"
+                center="{{controller.event.eventAddr}}"
+                style="height:90%">
+            <directions draggable="true"
+                        panel="directions-panel"
+                        travel-mode="DRIVING"
+                        origin="{{controller.user.address}}"
+                        destination="{{controller.event.eventAddr}}">
+            </directions>
+            <!--<custom-marker id="start"
+                           position="1000 Queen Anne Ave N, Seattle WA 98109">
+                <div> Start Here </div>
+            </custom-marker>
+            <custom-marker id="end"
+                           position="7530 164th Ave NE A112, Redmond, WA 98052">
+                <div> Ends Here </div>
+            </custom-marker>-->
+        </ng-map>
+    </div>
+
+    <div id="directions-panel" class="card" style="width: 35%; height: 70%; overflow: auto; padding: 0px 5px"></div>
+
+</div>
+
+<div class="row navSpacer"></div>

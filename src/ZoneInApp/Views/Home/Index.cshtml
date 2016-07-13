@@ -1,0 +1,243 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" ng-app="ZoneInApp">
+<head>
+
+    <!-- Mobile-Friendly -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- App Title -->
+    <title>Zone In</title>
+
+    <!-- Custom Google Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Pacifico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,300">
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display|Raleway:700,100,400|Roboto:400,700|Playfair+Display+SC:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap CSS -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap DateTimePicker CSS -->
+    <link href="~/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Angular Material CSS -->
+    <link href="~/lib/angular-material/angular-material.css" rel="stylesheet" />
+
+    <!-- Zone In CSS -->
+    <link href="~/css/Default.css" rel="stylesheet" />
+    <link href="~/css/ZoneIn.css" rel="stylesheet" />
+    <base href="/" />
+
+</head>
+
+<body ng-controller="AccountController as account" ng-cloak>
+
+    <!-- AngularJS View -->
+    <div class="container-fluid">
+        <ui-view></ui-view>
+    </div>
+
+    <div class="sidebar" data-background-color="black" data-active-color="primary" ng-show="account.isLoggedIn()" >
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="/about" class="simple-text" id="side-link">
+                    <i class="fa fa-hospital-o" aria-hidden="true"></i>
+                    <strong>Zone In</strong>
+                </a>
+            </div>
+            <ul class="nav">
+                <li>
+                    <a href="/newsfeed" id="side-link">
+                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/inbox" id="side-link">
+                        <i class="fa fa-inbox" aria-hidden="true"></i>
+                        <p>Inbox</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/users" id="side-link">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <p>Neighbors</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/map" id="side-link">
+                        <i class="fa fa-map" aria-hidden="true"></i>
+                        <p>Map</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/events" id="side-link">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <p>Events Calendar</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/categories" id="side-link">
+                        <i class="fa fa-briefcase" aria-hidden="true"></i>
+                        <p>Recommendations</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/secret" id="side-link">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <p>Admin</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/login" ng-show="!account.isLoggedIn()" id="side-link"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a>
+                    <a href="/" ng-click="account.logout()" ng-show="account.isLoggedIn()" id="side-link"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                </li>
+                <li>
+                    <a href="#" ng-show="account.isLoggedIn()" data-toggle="dropdown" class="dropdown-toggle" id="side-link">
+                        [{{account.getUserName()}}]
+                    </a>
+                    <ul class="dropdown-menu" role="menu" >
+                        <li><a href="/user/edit/{{userEdit.user.id}}" id="side-menu-link">Your profile</a></li>
+                        <li><a href="#" id="side-menu-link">Bookmarks</a></li>
+                        <li><a href="#" id="side-menu-link">Settings</a></li>
+                        <li><a href="#" id="side-menu-link">Help</a></li>
+                        <li><a href="/" ng-click="account.logout()" ng-show="account.isLoggedIn()" id="side-menu-link">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- Navigation Bar -->
+    @*<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" ng-show="account.isLoggedIn()">
+        <div class="container topnav">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="/newsfeed">Zone In</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/newsfeed">Home</a>
+                    </li>
+                    <li>
+                        <a href="/inbox">Inbox</a>
+                    </li>
+                    <li>
+                        <a href="/users">Neighbors</a>
+                    </li>
+                    <li>
+                        <a href="/map">Map</a>
+                    </li>
+                    <li>
+                        <a href="/events">Events Calendar</a>
+                    </li>
+                    <li>
+                        <a href="/categories">Businesses</a>
+                    </li>
+                    <li>
+                        <a href="/secret">Admin</a>
+                    </li>
+                    <li>
+                        <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
+                        <a href="/" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+                    </li>
+                    <li>
+                        <a href="#" ng-show="account.isLoggedIn()">
+                            [{{account.getUserName()}}]
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>*@
+
+
+
+    <!-- Library Files -->
+    <script src="~/lib/angular/angular.js"></script>
+    <script src="~/lib/angular-aria/angular-aria.js"></script>
+    <script src="~/lib/angular-resource/angular-resource.js"></script>
+    <script src="~/lib/angular-animate/angular-animate.js"></script>
+    <script src="~/lib/angular-messages/angular-messages.js"></script>
+    <script src="~/lib/angular-touch/angular-touch.js"></script>
+    <script src="~/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!-- Timeago -->
+    <script src="~/lib/ng-timeago/ngtimeago.js"></script>
+
+    <!-- ngTweet -->
+    <script src="~/lib/ngtweet/dist/ngtweet.js"></script>
+
+    <!-- Instafeed -->
+    <script src="~/lib/instafeed.js/instafeed.js"></script>
+    
+    <!-- Angular Material -->
+    <script src="~/lib/angular-material/angular-material.js"></script>
+
+    <!-- JQuery -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!-- Moment -->
+    <script src="~/lib/moment/min/moment.min.js"></script>
+
+    <!-- Bootstrap DateTimePicker-->
+    <script src="~/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/be0a948540.js"></script>
+
+    <!-- Hipster Cards --> 
+    @*<script src="~/lib/themes/hipster-cards.js"></script>*@
+
+    <!-- Paper Dashboard -->
+    @*<script src="~/lib/themes/paper-dashboard.js"></script>*@
+
+    <!-- Gaia -->
+    @*<script src="~/lib/themes/gaia.js"></script>*@
+
+    <!-- Google Maps API -->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDz8z2MWCkDtI64_E0rdWECMxqEtLK9bec&libraries=places"></script>
+    <script src="~/lib/ngmap/build/scripts/ng-map.min.js"></script>
+
+    <!-- App File-->
+    <script src="~/ngapp/app.js"></script>
+
+    <!-- App Services -->
+    <script src="~/ngapp/services/services.js"></script>
+    <script src="~/ngApp/services/postService.js"></script>
+    <script src="~/ngApp/services/inboxService.js"></script>
+    <script src="~/ngApp/services/userService.js"></script>
+    <script src="~/ngApp/services/eventService.js"></script>
+    <script src="~/ngApp/services/categoryService.js"></script>
+
+    <!-- App Controllers -->
+    <script src="~/ngapp/controllers/controllers.js"></script>
+    <script src="~/ngApp/controllers/welcomeController.js"></script>   
+    <script src="~/ngApp/controllers/postController.js"></script>    
+    <script src="~/ngApp/controllers/inboxController.js"></script>
+    <script src="~/ngApp/controllers/userController.js"></script>
+    <script src="~/ngApp/controllers/mapController.js"></script>
+    <script src="~/ngApp/controllers/eventController.js"></script>
+    <script src="~/ngApp/controllers/categoryController.js"></script>
+
+    <!-- Security -->
+    <script src="~/ngapp/services/accountservice.js"></script>
+    <script src="~/ngapp/controllers/accountcontroller.js"></script>  
+
+</body>
+</html>

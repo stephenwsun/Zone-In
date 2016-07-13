@@ -1,0 +1,22 @@
+{
+  "name": "ZoneInApp",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3.x",
+    "jquery": "2.x",
+    "jquery-validation": "1.x",
+    "jquery-validation-unobtrusive": "3.x",
+    "angular": "1.x",
+    "angular-resource": "1.x",
+    "angular-bootstrap": "1.x",
+    "angular-animate": "1.x",
+    "angular-touch": "1.x",
+    "angular-ui-router": "0.x",
+    "ngmap": "1.17.3",
+    "angular-material": "^1.0.9",
+    "ngtweet": "^0.5.1",
+    "instafeed.js": "^1.4.1",
+    "ng-timeago": "^0.0.2",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.37"
+  }
+}

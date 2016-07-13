@@ -1,0 +1,41 @@
+﻿<div class="row navSpacer"></div>
+
+<div class="container">
+    <div class="row title">
+        <h1><span class="title">Edit Post</span></h1>
+    </div>
+</div>
+
+<div class="row navSpacer"></div>
+
+<form ng-submit="controller.savePost()">
+    <div class="container col-md-12">
+        <input type="text" id="title" ng-model="controller.post.title" required />
+    </div>
+    <div class="row spacer"></div>
+    <div class="row spacer"></div>
+    <div class="container col-md-12">
+        <input type="text" id="body" ng-model="controller.post.body" required />
+    </div>
+
+    <div class="container col-md-12">
+        <div class="form-group">
+            <label for="category">Select Category:</label>
+            <select ng-model="controller.post.category" class="form-control" id="sel1" required>
+                <option value="" disabled selected>Choose a Category</option>
+                <option>Free Items</option>
+                <option>Crime & Safety</option>
+                <option>General</option>
+                <option>Lost & Found</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="container col-md-12">
+        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Save Changes">
+        <input type="button" class="btn btn-danger btn-lg btn-block" ng-click="controller.cancel() " value="Cancel">
+    </div>
+</form>
+
+<div class="row navSpacer"></div>
+<div class="row navSpacer"></div>

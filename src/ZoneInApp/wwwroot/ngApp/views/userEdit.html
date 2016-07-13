@@ -1,0 +1,184 @@
+﻿<div class="row navSpacer"></div>
+<div class="row navSpacer"></div>
+
+
+<div class="user-profile">
+
+    <div class="row navSpacer"></div>
+    <div class="row navSpacer"></div>
+
+    <div class="container-fluid col-md-10 col-md-offset-2">
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="image">
+                    <img ng-src="../../images/Zone In Login Page.jpg" alt="..." />
+                </div>
+                <div class="content">
+                    <div class="author">
+                        <img class="avatar border-white" ng-src="http://bootdey.com/img/Content/user_1.jpg" alt="..." />
+                        <h4 class="title">
+                            {{controller.user.firstName}} {{controller.user.lastName}}<br />
+                            <a href="#"><small>@{{controller.user.firstName}}{{controller.user.lastName}}</small></a>
+                        </h4>
+                    </div>
+                    <p class="description text-center">
+                        "Just another day at Coder Camps"
+                    </p>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-1">
+                            <h5>25<br /><small>Years Old</small></h5>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>{{controller.user.neighborhoodName}}<br /><small>Location</small></h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5>Male<br /><small>Gender</small></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Family Members</h4>
+                </div>
+                <div class="content">
+                    <ul class="list-unstyled team-members">
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div class="avatar">
+                                        <img ng-src="http://bootdey.com/img/Content/user_1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    Family Member 1
+                                    <br />
+                                    <span class="text-muted"><small>Sister</small></span>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div class="avatar">
+                                        <img ng-src="http://bootdey.com/img/Content/user_1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    Family Member 2
+                                    <br />
+                                    <span class="text-success"><small>Brother</small></span>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <div class="avatar">
+                                        <img ng-src="http://bootdey.com/img/Content/user_1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    Dog's Name
+                                    <br />
+                                    <span class="text-danger"><small>Dog</small></span>
+                                </div>
+                                <div class="col-xs-3 text-right">
+                                    <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Edit Profile</h4>
+                </div>
+                <div class="content">
+                    <form ng-submit="controller.saveUser()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control border-input" placeholder="First Name" ng-model="controller.user.firstName" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control border-input" placeholder="Last Name" ng-model="controller.user.lastName" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Neighborhood</label>
+                                    <input type="text" class="form-control border-input" placeholder="Neighborhood" ng-model="controller.user.neighborhoodName" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="text" class="form-control border-input" placeholder="Phone" ng-model="controller.user.phone">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control border-input" placeholder="Email" ng-model="controller.user.email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control border-input" placeholder="Home Address" ng-model="controller.user.address" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Interests</label>
+                                    <input type="text" class="form-control border-input" placeholder="Interests" ng-model="controller.user.interests">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Skills</label>
+                                    <input type="text" class="form-control border-input" placeholder="Skills" ng-model="controller.user.skills">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Biography</label>
+                                    <textarea rows="5" class="form-control border-input" placeholder="Tell us about yourself" ng-model="controller.user.biography">I get by with a little help from my friends.</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-fill btn-wd">Update Profile</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

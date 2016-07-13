@@ -1,0 +1,42 @@
+<div class="row navSpacer"></div>
+<div class="row navSpacer"></div>
+<div class="row navSpacer"></div>
+
+<div style="background-image: url('../../images/Zone In Login Page.jpg')" class="main">
+    <div class="overlay"></div>
+    <div class="row navSpacer"></div>
+    <div class="row navSpacer"></div>
+    <div class="row navSpacer"></div>
+    <div class="row navSpacer"></div>
+    <div class="row navSpacer"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4">
+                <form id="login-register-form" ng-submit="controller.login()" class="form-login">
+                    <center>
+                        <h4 id="login">Welcome to Zone In</h4>
+                    </center>
+                    <input type="email" ng-model="controller.loginUser.email" id="userName" class="form-control input-sm chat-input" placeholder="Email" required/>
+                    <br />
+                    <input type="password" ng-model="controller.loginUser.password" id="userPassword" class="form-control input-sm chat-input" placeholder="Password" required/>
+                    <br />
+                    <div class="wrapper">
+                        <span class="group-btn">
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <a href="/register" class="btn btn-danger btn-block">Register</a>
+                        </span>
+                    </div>
+                </form>
+                <ul>
+                    <li ng-repeat="error in controller.validationMessages">
+                        {{error}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

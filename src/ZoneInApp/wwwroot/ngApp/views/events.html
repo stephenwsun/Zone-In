@@ -1,0 +1,143 @@
+﻿<div class="row navSpacer"></div>
+<div class="row navSpacer"></div>
+
+<div style="background-image: url('../../images/Apartments.jpg')" class="main" id="home-image" no-repeat></div>
+
+<div style="position: fixed; top: 0; right: 0; width:100%; z-index: 1; opacity: 0.6">
+    <div class="alert alert-warning" role="alert">
+        <center>
+            <p>Hey <strong>{{controller.user.firstName}}</strong>, these are the events currently happening in <strong>{{controller.user.neighborhoodName}}</strong></p>
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#event-modal">
+                Create Event
+            </button>
+        </center>
+    </div>
+</div>
+
+<div class="row navSpacer"></div>
+
+<div class="container col-md-10 col-md-offset-2" style="z-index: 0">
+
+    <div class="container col-md-4 col-md-offset-1" style="margin-bottom: -99999px;">
+        <div class="instafeed" id="instafeed"></div>
+    </div>
+
+    <div class="container col-md-4 col-md-offset-6" ng-repeat="event in controller.events | orderBy: '-eventStart'">
+        <div class="newsfeed-card" data-background="image" data-src="../../images/Events Sample Image.png">
+            <div class="header">
+                <img ng-src="../../images/Events Sample Image.png" style="width: 100%; height: auto" />
+                <div class="social-line" data-buttons="3">
+                    <button class="btn btn-social btn-facebook">
+                        GOING | {{event.going}}
+                    </button>
+                    <button class="btn btn-social btn-neutral">
+                        MAYBE | {{event.maybe}}
+                    </button>
+                    <button class="btn btn-social btn-pinterest">
+                        DECLINE | {{event.declined}}
+                    </button>
+                </div>
+            </div>
+            <div class="content">
+                <center><h4 class="title"><a href="/event/details/{{event.id}}">{{event.title}}</a></h4></center>
+                <center><h5 class="title">{{event.eventAddr}}</h5></center>
+                <center><h6 class="title">{{event.eventStart | date: "short"}} - {{event.eventEnd | date: "short"}}</h6></center>
+                <p class="description">
+                    {{event.description}}
+                </p>
+                <br />
+            </div>
+            <center>
+                <div class="category event-label">
+                    <a target="_blank" href="http://www.facebook.com"><h6 class="label label-primary" id="event-label"><i class="fa fa-facebook-square"></i> Facebook</h6></a>
+                    <a target="_blank" href="http://www.twitter.com"><h6 class="label label-info" id="event-label"><i class="fa fa-twitter"></i> Twitter</h6></a>
+                    <a target="_blank" href="http://www.pinterest.com"><h6 class="label label-danger" id="event-label"><i class="fa fa-pinterest"></i> Pinterest</h6></a>
+                </div>
+            </center>
+            <div class="filter"></div>
+        </div>
+        <br />
+        <br />
+        <br />
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="event-modal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <center>
+                    <h4 class="modal-title" id="myModalLabel">
+                        New Event
+                    </h4>
+                </center>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form ng-submit="controller.saveEvent()">
+                    <div class="form-group">
+                        <label>Event Title</label>
+                        <input type="text" ng-model="controller.event.title" class="form-control" placeholder="Add title" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Event Description</label>
+                        <textarea rows="5" type="text" ng-model="controller.event.description" class="form-control" placeholder="Add description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Event Address</label>
+                        <input type="text" ng-model="controller.event.eventAddr" class="form-control" placeholder="Add location" required />
+                    </div>
+                    <center>
+                        <div class="form-group">
+                            <label>Start Date/Time</label>
+                            <div class='input-group date' id='datetimepicker6'>
+                                <input type='text' class="form-control" ng-model="controller.event.eventStart" />
+                                <span class="input-group-addon" ng-click="controller.dateTimePicker()">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>End Date/Time</label>
+                            <div class='input-group date' id='datetimepicker7'>
+                                <input type='text' class="form-control" ng-model="controller.event.eventEnd" />
+                                <span class="input-group-addon" ng-click="controller.dateTimePicker()">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>                              
+                    </center>
+                    <br />
+                    <br />
+                    <center>
+                        <div>
+                            <button type="submit" class="btn btn-warning btn-round" ng-click="controller.close()">
+                                Create my event!
+                            </button>
+                        </div>
+                    </center>
+                </form>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <center><h6>Your event will be visible to all users in your neighborhood</h6></center>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

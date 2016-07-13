@@ -1,0 +1,113 @@
+﻿<!--<div class="row navSpacer"></div>-->
+
+<!--<input places-auto-complete id="searchInput" class="controls" types="['geocode']" placeholder="Enter a location">-->
+
+<!--<ng-map id="map-canvas" zoom="17" center="current-location">
+    <marker position="10910 Wynfield Springs Dr."
+            title="You are here"
+            animation="Animation.BOUNCE"
+            centered="true"
+            on-click="map.showInfoWindow('bar')">
+    </marker>
+    <info-window id="bar" visible-on-marker="foo">
+        <div ng-non-bindable>
+            <div id="siteNotice"></div>
+            <h1 id="firstHeading" class="firstHeading">Stephen Sun</h1>
+            <div id="bodyContent">
+                <p>
+                    10910 Wynfield Springs Dr.
+                    Richmond, TX 77406
+                </p>
+                <p>
+                    Westheimer Lakes at Canyon Gate
+                </p>
+            </div>
+        </div>
+    </info-window>
+</ng-map>-->
+
+
+
+
+<!--<ng-map id="map-canvas" zoom="17" center="current-location">
+    <marker ng-repeat="neighbor in controller.neighbors" 
+            position="{{neighbor.address}}"
+            title="{{neighbor.firstName}} {{neighbor.lastName}} @ {{neighbor.address}}"
+            animation="Animation.BOUNCE"
+            centered="true"
+            on-click="map.showInfoWindow('bar')">
+    </marker>
+    <info-window id="bar" visible-on-marker="foo">
+        <div ng-non-bindable>
+            <div id="siteNotice"></div>
+            <h1 id="firstHeading" class="firstHeading">{{neighbor.firstName}} {{neighbor.lastName}}</h1>
+            <div id="bodyContent">
+                <p>
+                    {{neighbor.address}}
+                </p>
+                <p>
+                    {{neighbor.neighborhoodName}}
+                </p>
+            </div>
+        </div>
+    </info-window>
+</ng-map>-->
+
+
+
+<div class="container-fluid">
+    <ng-map id="map-canvas" zoom="16" center="current-location">
+
+        <marker position="{{controller.user.address}}" centered="true"
+                title="{{controller.user.firstName}} {{controller.user.lastName}} @ {{controller.user.address}}"
+                icon="{
+          path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+          fillColor: 'green',
+          fillOpacity: 0.8,
+          scale: 0.1,
+          strokeColor: 'green',
+          strokeWeight: 2
+        }" dragglele="true"></marker>
+
+        <marker ng-repeat="neighbor in controller.neighbors"
+                position="{{neighbor.address}}"
+                title="{{neighbor.firstName}} {{neighbor.lastName}} @ {{neighbor.address}}"
+                centered="true"
+                on-click="controller.showNeighbor()">
+        </marker>
+        <info-window id="bar" visible-on-marker="foo">
+            <div ng-non-bindable>
+                <div id="siteNotice"></div>
+                <h1 id="firstHeading" class="firstHeading">{{neighbor.firstName}} {{neighbor.lastName}}</h1>
+                <div id="bodyContent">
+                    <p>
+                        {{neighbor.address}}
+                    </p>
+                    <p>
+                        {{neighbor.neighborhoodName}}
+                    </p>
+                </div>
+            </div>
+        </info-window>
+    </ng-map>
+</div>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" ng-repeat="neighbor in controller.neighbors">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{neighbor.firstName}} {{neighbor.lastName}}</h4>
+            </div>
+            <div class="modal-body">
+                {{neighbor.address}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+

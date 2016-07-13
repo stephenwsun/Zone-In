@@ -1,0 +1,79 @@
+﻿<div class="row navSpacer"></div>
+
+<div style="background-image: url('../../images/Street.jpg')" class="main" id="home-image" no-repeat></div>
+
+<div class="container col-md-5 col-md-offset-4">
+
+    <div class="container-fluid">
+        <div class="newsfeed-card">
+            <br />
+            <center>
+                <h4 class="title">
+                    <strong>{{controller.recommendation.businessName}}</strong>
+                </h4>
+            </center>
+            <br />
+            <center>
+                <h5>{{controller.recommendation.busAddr}}</h5>
+                <h5>{{controller.recommendation.busPhone}}</h5>
+                <h5>{{controller.recommendation.url}}</h5>
+                <br />
+                <h4><i class="fa fa-heart" style="color: red"><strong> {{controller.recommendation.numRecos}} Neighbors Recommend</strong></i></h4>
+            </center>
+            
+            <div class="social-line social-line-visible" data-buttons="4">
+                <a href="http://www.facebook.com" class="btn btn-social btn-facebook" style="color: #3b5998">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a href="http://www.twitter.com" class="btn btn-social btn-twitter" style="color: #55acee">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a href="http://www.yelp.com" class="btn btn-social btn-pinterest" style="color: #cc2127">
+                    <i class="fa fa-yelp"></i>
+                </a>
+                <form id="recommend">
+                    <button class="btn btn-social btn-google" style="color: #dd4b39" ng-click="controller.recommend()">
+                        <i class="fa fa-hand-o-right" style="color: green"><strong> Recommend!</strong></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card card-map">
+                <div class="header">
+                    <center><h4 class="author title">Location</h4></center>
+                </div>
+                <div class="map">
+                    <ng-map id="user-map-canvas" zoom="18" center="{{controller.recommendation.busAddr}}">
+                        <marker position="{{controller.recommendation.busAddr}}"
+                                title="{{controller.recommendation.businessName}} @ {{controller.recommendation.busAddr}}"
+                                centered="true"
+                                on-click="map.showInfoWindow('bar')">
+                        </marker>
+                        <info-window id="bar" visible-on-marker="foo">
+                            <div ng-non-bindable>
+                                <div id="siteNotice"></div>
+                                <h1 id="firstHeading" class="firstHeading">{{controller.recommendation.businessName}}</h1>
+                                <div id="bodyContent">
+                                    <p>
+                                        {{controller.recommendation.busAddr}}
+                                    </p>
+                                    <p>
+                                        {{controller.recommendation.busPhone}}
+                                    </p>
+                                    <p>
+                                        {{controller.recommendation.url}}
+                                    </p>
+                                </div>
+                            </div>
+                        </info-window>
+                    </ng-map>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

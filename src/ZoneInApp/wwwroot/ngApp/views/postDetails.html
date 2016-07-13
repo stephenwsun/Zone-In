@@ -1,0 +1,101 @@
+﻿<div class="row navSpacer"></div>
+
+<div style="background-image: url('../../images/People.jpg')" class="main" id="home-image" no-repeat></div>
+<div class="container-fluid col-md-10 col-md-offset-2">
+    <div class="newsfeed-card card-user">
+        <div class="header">
+            <div class="image">
+                <img ng-src="../../images/Autumn.jpg" alt="..." />
+            </div>
+
+            <div class="author">
+                <img class="avatar" ng-src="../../images/Stephen Profile Picture.jpg" alt="..." />
+            </div>
+
+            <div class="social-line social-line-visible" data-buttons="4">
+                <a href="http://www.facebook.com" class="btn btn-social btn-facebook" style="color: #3b5998">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a href="http://www.twitter.com" class="btn btn-social btn-twitter" style="color: #55acee">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a href="http://www.pinterest.com" class="btn btn-social btn-pinterest" style="color: #cc2127">
+                    <i class="fa fa-pinterest"></i>
+                </a>
+                <a href="http://plus.google.com" class="btn btn-social btn-google" style="color: #dd4b39">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </div>
+
+            <div class="content">
+                <center><h6 class="category">{{controller.post.category}}</h6></center>
+                <center><h4 class="title">{{controller.post.title}}</h4></center>
+                <p class="description">{{controller.post.body}}</p>
+                <br />
+                <br />
+                <center><h6 class="category"><a href="/user/details/{{controller.post.user.id}}"><strong>{{controller.post.user.firstName}} {{controller.post.user.lastName}}</strong></a> from <a href="/users"><strong>{{controller.post.user.neighborhoodName}}</strong></a> - <strong>{{controller.post.dateCreated | date: "longDate"}}</strong></h6></center>
+            </div>
+        </div>
+        <div class="social-line social-line-visible" data-buttons="3">
+            <button class="btn btn-social dropdown-toggle" data-toggle="dropdown">
+                <h4><strong><i class="fa fa-caret-square-o-down"></i></strong></h4>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Send private message</a></li>
+                <li><a href="#">Bookmark</a></li>
+                <li class="divider"></li>
+                <li><a href="/#">Flag Post</a></li>
+            </ul>
+            <form id="thank">
+                <button class="btn btn-social btn-facebook" ng-click="controller.thankPost()">
+                    <h4><strong>THANK | {{controller.post.thanks}}</strong></h4>
+                </button>
+            </form>
+            <a href="#replyform" class="btn btn-social btn-pinterest" style="color: #cc2127">
+                <h4><strong>REPLY</strong></h4>
+            </a>
+        </div>
+    </div>
+    <br />
+    <br />
+</div>
+
+<div class="card-box col-md-6 col-md-offset-4">
+    <form id="replyForm">
+        <div class="newsfeed-card">
+            <textarea rows="4" type="text" class="form-control" ng-model="controller.reply.message" placeholder="Write a reply..."></textarea>
+            <br />
+            <div class="footer text-center">
+                <button class="btn btn-neutral btn-round btn-fill btn-modern" ng-click="controller.saveReply()">Post Reply!</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="card-box col-md-6 col-md-offset-4" ng-repeat="reply in controller.post.replies">
+    <div class="newsfeed-card">
+        <div class="content">
+            <center><time class="timeago">{{reply.dateCreated | date: "longDate"}}</time></center>
+            <center><time class="timeago">{{reply.dateCreated | timeago}}</time></center>
+            <br />
+            <center><p class="description">{{reply.message}}</p></center>
+            <br />
+            <center><h6 class="category"><a href="/user/details/{{reply.user.id}}"><strong>{{reply.user.firstName}} {{reply.user.lastName}}</strong></a> from <a href="/users"><strong>{{reply.user.neighborhoodName}}</strong></a> - <strong>{{reply.dateCreated | timeago}}</strong></h6></center>
+        </div>
+        <div class="social-line social-line-visible" data-buttons="2">
+            <button class="btn btn-social btn-facebook">
+                <h6><strong>THANK</strong></h6>
+            </button>
+            <button class="btn btn-social btn-pinterest">
+                <h6><strong>FLAG</strong></h6>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+    
+
+
+

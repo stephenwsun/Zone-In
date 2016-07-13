@@ -1,0 +1,9 @@
+﻿<h1>Create Category</h1>
+<form ng-submit="controller.saveCategory()">
+    <div class="form-group">
+        <label class="sr-only">Category:</label>
+        <input type="text" placeholder="enter category" ng-model="controller.category.name" />
+    </div>
+    <input type="submit" value="Create" />
+    <input type="button" ng-click="controller.cancelCategory()" value="Cancel" />
+</form>

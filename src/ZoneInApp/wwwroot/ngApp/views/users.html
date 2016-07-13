@@ -1,0 +1,34 @@
+﻿<div class="row navSpacer"></div>
+<div class="row navSpacer"></div>
+
+
+<div style="background-image: url('../../images/Neighborhood.jpg')" class="main" id="home-image" no-repeat></div>
+<div class="container col-md-8 col-md-offset-3">
+    <ul class="list-group" ng-repeat="user in controller.users">
+        <li class="row" id="neighbors">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body p-t-10">
+                        <div class="media-main">
+                            <a class="pull-left" href="#">
+                                <img class="thumb-lg img-circle bx-s" ng-src="http://bootdey.com/img/Content/user_1.jpg" alt="">
+                            </a>
+                            <div class="pull-right btn-group-md">
+                                <br />
+                                <a href="#" id="message-button" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Message</a>
+                            </div>
+                            <div class="info">
+                                <h4><a href="/user/details/{{user.id}}">{{user.firstName}} {{user.lastName}}</a></h4>
+                                <p class="text-muted">{{user.address}}</p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+

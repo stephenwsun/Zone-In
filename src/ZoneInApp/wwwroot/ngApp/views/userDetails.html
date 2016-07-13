@@ -1,0 +1,121 @@
+﻿<div class="row navSpacer"></div>
+
+<div class="container col-md-10 col-md-offset-2">
+    <div class="container-fluid">
+        <div class="card card-user">
+            <div class="image">
+                <img ng-src="../../images/Zone In Login Page.jpg" alt="..." />
+            </div>
+            <div class="content">
+                <div class="author">
+                    <img class="avatar border-white" ng-src="http://bootdey.com/img/Content/user_1.jpg" alt="..." />
+                    <br />
+                    <br />
+                    <h4 class="title">
+                        {{controller.user.firstName}} {{controller.user.lastName}}<br />
+                        <a href="/users"><small>{{controller.user.neighborhoodName}}</small></a>
+                    </h4>
+                </div>
+                <br />
+                <p class="description text-center">
+                    <a href="#" class="btn btn-primary">Message</a>
+                </p>
+            </div>
+            <hr>
+            <div class="text-center">
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-1">
+                        <h5>Email<br /><small>{{controller.user.email}}</small></h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Address<br /><small>{{controller.user.address}}</small></h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Phone<br /><small>{{controller.user.phone}}</small></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="card">
+            <center>
+                <h4 class="title author">
+                    Biography
+                </h4>
+            </center>
+            <br />
+            <center>{{controller.user.biography}}</center>
+            <br />
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="card col-md-6">
+            <center>
+                <h4 class="title author">
+                    Interests
+                </h4>
+            </center>
+            <br />
+            <center>{{controller.user.interests}}</center>
+            <br />
+        </div>
+        <div class="card col-md-6">
+            <center>
+                <h4 class="title author">
+                    Skills
+                </h4>
+            </center>
+            <br />
+            <center>{{controller.user.skills}}</center>
+            <br />
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card card-map">
+                <div class="header">
+                    <center><h4 class="author title">Location</h4></center>
+                </div>
+                <div class="map">
+                    <ng-map id="user-map-canvas" zoom="17" center="{{controller.user.address}}">
+                        <marker position="{{controller.user.address}}"
+                                title="{{controller.user.firstName}} {{controller.user.lastName}} @ {{controller.user.address}}"
+                                centered="true"
+                                on-click="map.showInfoWindow('bar')">
+                        </marker>
+                        <info-window id="bar" visible-on-marker="foo">
+                            <div ng-non-bindable>
+                                <div id="siteNotice"></div>
+                                <h1 id="firstHeading" class="firstHeading">{{controller.user.firstName}} {{controller.user.lastName}}</h1>
+                                <div id="bodyContent">
+                                    <p>
+                                        {{controller.user.address}}
+                                    </p>
+                                    <p>
+                                        {{controller.user.neighborhoodName}}
+                                    </p>
+                                </div>
+                            </div>
+                        </info-window>
+                    </ng-map>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

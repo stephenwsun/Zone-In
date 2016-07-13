@@ -1,0 +1,92 @@
+﻿<div class="row navSpacer"></div>
+<div class="row navSpacer"></div>
+
+
+<div style="background-image: url('../../images/Street.jpg')" class="main" id="home-image" no-repeat></div>
+
+<div style="position: fixed; top: 0; right: 0; width:100%; z-index: 1; opacity: 0.8">
+    <div class="alert alert-info" role="alert">
+        <center>
+            <p>Have a favorite business you like and trust? Let your neighbors know!</p>
+            <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#post-modal">
+                Recommend a Business
+            </button>            
+        </center>
+    </div>
+</div>
+
+<div class="row navSpacer"></div>
+
+<div class="card-box col-md-5 col-md-offset-4" ng-repeat="recommendation in controller.recommendations">
+    <div class="newsfeed-card">
+        <div class="content">
+            <center><h4 class="title"><strong><a href="/recommendation/details/{{recommendation.id}}">{{recommendation.businessName}}</a></strong></h4></center>
+            <center><h5 class="title"><a href="/recommendation/details/{{recommendation.id}}">{{recommendation.busAddr}}</a></h5></center>
+            <center><h5 class="title"><a href="/recommendation/details/{{recommendation.id}}">{{recommendation.busPhone}}</a></h5></center>
+            <center><h5 class="title"><a href="http://{{recommendation.url}}">{{recommendation.url}}</a></h5></center>
+            <center><h4><i class="fa fa-heart" style="color: red"><strong> {{recommendation.numRecos}} Neighbors Recommend</strong></i></h4></center>
+        </div>
+    </div>
+    <br />
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="post-modal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <center>
+                    <h4 class="modal-title" id="myModalLabel">
+                        New Recommendation
+                    </h4>
+                </center>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+
+                <form ng-submit="controller.saveRecommendation()">
+                    <div class="form-group">
+                        <label>Business Name</label>
+                        <input type="text" ng-model="controller.recommendation.businessName" class="form-control" placeholder="Add Business Name" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" ng-model="controller.recommendation.busAddr" class="form-control" placeholder="Add Address" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" ng-model="controller.recommendation.busPhone" class="form-control" placeholder="Add Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Website</label>
+                        <input type="text" ng-model="controller.recommendation.url" class="form-control" placeholder="Add Website" required>
+                    </div>
+                    <br />
+                    <br />
+                    <center>
+                        <div>
+                            <button type="submit" class="btn btn-danger btn-round" ng-click="controller.close()">
+                                Create my recommendation!
+                            </button>
+                        </div>
+                    </center>
+                </form>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <center><h6>Your recommendation will be visible to all users in your neighborhood</h6></center>
+            </div>
+        </div>
+    </div>
+</div>

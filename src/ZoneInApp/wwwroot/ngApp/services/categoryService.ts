@@ -5,7 +5,6 @@
         private categoryResource;
         private recommendationResource;
 
-
         constructor($resource: ng.resource.IResourceService) {
 
             this.categoryResource = $resource('/api/category/:id', null, {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,9 +26,7 @@ namespace ZoneInApp.Services
         {
             var user = _repo.Query<ApplicationUser>().Where(u => u.Id == id).FirstOrDefault();
             //user.PrivateMessages = user.PrivateMessages.ToList();
-            var messages = _repo.Query<PrivateMessage>().Where(m => m.ToUser.Id == user.Id || m.FromUserId == user.Id).Where(m => m.IsOriginal == true).ToList();
-
-            //var messages = user.PrivateMessages.ToList();
+            var messages = _repo.Query<PrivateMessage>().Where(m => m.ToUser.Id == user.Id || m.FromUserId == user.Id).Where(m => m.IsOriginal == true).Include(m => m.FromUser).Include(m => m.ToUser).ToList();
 
             //var messages = _repo.Query<PrivateMessage>().Where(m => m.FromUser.Id == user.Id).ToList();
             return messages;

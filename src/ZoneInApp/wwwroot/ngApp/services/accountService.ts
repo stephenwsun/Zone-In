@@ -4,6 +4,7 @@ namespace ZoneInApp.Services {
 
         // Store access token and claims in browser session storage
         private storeUserInfo(userInfo) {
+
             // store user name
             this.$window.sessionStorage.setItem('userName', userInfo.userName);
 

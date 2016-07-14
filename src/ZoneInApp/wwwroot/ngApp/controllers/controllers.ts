@@ -17,10 +17,6 @@ namespace ZoneInApp.Controllers {
 
         constructor($http: ng.IHttpService, private postService: ZoneInApp.Services.PostService, private userService: ZoneInApp.Services.UserService, private eventService: ZoneInApp.Services.EventService, private categoryService: ZoneInApp.Services.CategoryService) {
 
-            //$http.get('/api/secrets').then((results) => {
-            //    this.secrets = results.data;
-            //});
-
             this.getLoginUser();
             this.getActivePosts();
             this.getActiveEvents();
@@ -50,7 +46,7 @@ namespace ZoneInApp.Controllers {
 
 
     export class AboutController {
-        public message = 'Hello from the about page!';
+
     }
 
 }

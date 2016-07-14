@@ -29,7 +29,7 @@
         getMessage() {
 
             this.inboxService.getMessage(this.messageId).then((data) => {
-                //console.log(data);
+
                 this.message = data;
             });
         }

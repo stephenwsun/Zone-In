@@ -25,7 +25,7 @@ namespace ZoneInApp.Data
                     Body = "Hi, I saw that you're giving away a free sofa. Do you know what color it is?",
                     Time = DateTime.UtcNow,
                     FromUserId = (context.Users.FirstOrDefault(u => u.FirstName == "Chris")).Id,
-                    ToUserId = (context.Users.FirstOrDefault(u => u.FirstName == "Stephen")).Id,
+                    ToUserId = (context.Users.FirstOrDefault(u => u.FirstName == "Deepa")).Id,
                     IsOriginal = true,
                 };
 
@@ -99,7 +99,7 @@ namespace ZoneInApp.Data
                         Subject = "White Husky seen limping",
                         Body = "Let me know if you need help putting up the flyers",
                         Time = DateTime.UtcNow,
-                        FromUserId = (context.Users.FirstOrDefault(u => u.FirstName == "Stephen")).Id,
+                        FromUserId = (context.Users.FirstOrDefault(u => u.FirstName == "Deepa")).Id,
                         ToUserId = (context.Users.FirstOrDefault(u => u.FirstName == "Mike")).Id,
                         IsOriginal = false,
                         ParentId = secondMessage.Id
@@ -110,8 +110,8 @@ namespace ZoneInApp.Data
                     Subject = "House cleaning",
                     Body = "Do you have any openings for the 25th of July?",
                     Time = DateTime.UtcNow,
-                    FromUserId = (context.Users.FirstOrDefault(u => u.FirstName == "Deepa")).Id,
-                    ToUserId = (context.Users.FirstOrDefault(u => u.FirstName == "Pamela")).Id,
+                    FromUserId = (context.Users.FirstOrDefault(u => u.FirstName == "Stephen")).Id,
+                    ToUserId = (context.Users.FirstOrDefault(u => u.FirstName == "Deepa")).Id,
                     IsOriginal = true,
                 };
 

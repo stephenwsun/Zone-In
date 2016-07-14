@@ -32,7 +32,7 @@ namespace ZoneInApp.Services
 
 
         /// <summary>
-        /// Returns all recommendations - Admin Use
+        /// ADMIN ONLY: Returns all recommendations
         /// </summary>
         /// <returns></returns>
         public List<Recommendation> GetAllRecommendations()
@@ -80,7 +80,11 @@ namespace ZoneInApp.Services
             }
         }
 
-
+        /// <summary>
+        /// Increments the count when Recommend button is clicked
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="recommendationValue"></param>
         public void SaveRecommendations(int id, int recommendationValue)
         {
             var recommendation = _repo.Query<Recommendation>().Where(p => p.Id == id).FirstOrDefault();
@@ -94,7 +98,7 @@ namespace ZoneInApp.Services
         }
 
         /// <summary>
-        /// Deletes recommended business with matching id - Admin Use
+        /// ADMIN ONLY: Deletes recommended business with matching id
         /// </summary>
         /// <param name="id"></param>
         public void DeleteRecommendation(int id)

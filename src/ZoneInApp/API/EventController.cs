@@ -24,7 +24,10 @@ namespace ZoneInApp.API
             _userManager = userManager;
         }
 
-        // GET: api/event/getactiveevents. For Admin
+        // GET: api/event/getactiveevents
+        /// <summary>
+        /// ADMIN ONLY: Get all events from all neighborhoods
+        /// </summary>
         [HttpGet]
         [Route("getactiveevents")]
         [Authorize(Policy = "AdminOnly")]
@@ -35,7 +38,9 @@ namespace ZoneInApp.API
         }
 
         // GET: api/event/getevents
-        // All events pertaining to the neighborhood
+        /// <summary>
+        /// All events pertaining to the logged in user's neighborhood
+        /// </summary>
         [HttpGet]
         [Route("getevents")]
         [Authorize]
@@ -48,6 +53,10 @@ namespace ZoneInApp.API
 
 
         // GET api/event/5
+        /// <summary>
+        /// Detailed information about the selected event
+        /// </summary>
+        /// <param name="id"></param>
         [HttpGet("{id}")]
         [Authorize]
         public IActionResult GetEvent(int id)
@@ -57,6 +66,10 @@ namespace ZoneInApp.API
         }
 
         // POST api/event
+        /// <summary>
+        /// Creates a new event
+        /// </summary>
+        /// <param name="ev"></param>
         [HttpPost]
         [Authorize]
         public IActionResult Post([FromBody]Event ev)
@@ -77,6 +90,11 @@ namespace ZoneInApp.API
         }
 
         // PUT api/values/5
+        /// <summary>
+        /// Update the Going, Maybe, Declined options of the event
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="eventValue"></param>
         [HttpPut("{id}")]
         [Authorize]
         public IActionResult Put(int id, [FromBody]int eventValue)
@@ -106,6 +124,10 @@ namespace ZoneInApp.API
         }
 
         // DELETE api/event/5
+        /// <summary>
+        /// ADMIN ONLY: Deletes an event from any neighborhood
+        /// </summary>
+        /// <param name="id"></param>
         [HttpDelete("{id}")]
         [Authorize(Policy = "AdminOnly")]
         public IActionResult Delete(int id)

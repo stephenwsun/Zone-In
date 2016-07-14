@@ -10,7 +10,6 @@ namespace ZoneInApp.Services
         Post GetPost(int id);
         void SavePost(Post post);
         List<Post> GetNeighborhoodPosts(string userId);
-        //List<Post> GetVetPosts(string userId);
         void SaveThanks(int id, int thankValue);
     }
 }

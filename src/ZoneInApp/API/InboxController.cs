@@ -25,6 +25,9 @@ namespace ZoneInApp.API
         }
 
         // GET: api/message
+        /// <summary>
+        /// Get all Parent messages only
+        /// </summary>
         [HttpGet]
         [Route("getusermessages")]
         [Authorize]
@@ -36,6 +39,10 @@ namespace ZoneInApp.API
         }
 
         // GET api/message/5
+        /// <summary>
+        /// Get the Parent message and subsequent replies to it
+        /// </summary>
+        /// <param name="id"></param>
         [HttpGet("{id}")]
         [Authorize]
         public IActionResult GetMessage(int id)
@@ -45,6 +52,10 @@ namespace ZoneInApp.API
         }
 
         // POST api/message
+        /// <summary>
+        /// Create or Edit a message
+        /// </summary>
+        /// <param name="message"></param>
         [HttpPost]
         [Authorize]
         public IActionResult Post([FromBody]PrivateMessage message)
@@ -62,13 +73,11 @@ namespace ZoneInApp.API
             }
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
         // DELETE api/values/5
+        /// <summary>
+        /// Delete a message
+        /// </summary>
+        /// <param name="id"></param>
         [HttpDelete("{id}")]
         [Authorize]
         public IActionResult Delete(int id)

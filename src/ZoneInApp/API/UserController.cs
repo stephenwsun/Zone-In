@@ -25,6 +25,9 @@ namespace ZoneInApp.API
         }
 
         // GET: api/user/getactiveusers
+        /// <summary>
+        /// Retrieve the list of neighbors of the logged in user
+        /// </summary>
         [HttpGet]
         [Route("getactiveusers")]
         [Authorize]
@@ -42,6 +45,10 @@ namespace ZoneInApp.API
         }
 
         // GET api/user/5
+        /// <summary>
+        /// Get the details of the selected neighbor
+        /// </summary>
+        /// <param name="id"></param>
         [HttpGet("{id}")]
         [Authorize]
         public IActionResult GetUser(string id)
@@ -51,6 +58,9 @@ namespace ZoneInApp.API
         }
 
         // GET api/user/5
+        /// <summary>
+        /// Get details of the logged in user
+        /// </summary>
         [HttpGet]
         [Authorize]
         public IActionResult GetLoginUser()
@@ -61,6 +71,10 @@ namespace ZoneInApp.API
         }
 
         // POST api/user
+        /// <summary>
+        /// Edit a user's details
+        /// </summary>
+        /// <param name="user"></param>
         [HttpPost]
         [Authorize]
         public IActionResult Post([FromBody]ApplicationUser user)
@@ -76,18 +90,6 @@ namespace ZoneInApp.API
                 _service.EditUserProfile(user, userId);
                 return Ok(user);
             }
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

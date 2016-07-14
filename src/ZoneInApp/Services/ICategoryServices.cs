@@ -8,7 +8,6 @@ namespace ZoneInApp.Services
         void DeleteCategory(int id);
         void SaveCategory(Category category);
         List<Category> GetCategories();
-        //List<Category> GetCategory(int id, string userId);
         List<Recommendation> GetCategory(int id, string userId);
     }
 }

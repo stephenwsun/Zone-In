@@ -25,6 +25,9 @@ namespace ZoneInApp.API
         }
 
         // GET: api/post/getactiveposts
+        /// <summary>
+        /// ADMIN ONLY: Get all posts from all neighborhoods
+        /// </summary>
         [HttpGet]
         [Route("getactiveposts")]
         [Authorize(Policy = "AdminOnly")]
@@ -35,6 +38,9 @@ namespace ZoneInApp.API
         }
 
         // GET: api/post/getneighborhoodposts
+        /// <summary>
+        /// Get posts pertaining to the logged in user's neighborhood
+        /// </summary>
         [HttpGet]
         [Route("getneighborhoodposts")]
         [Authorize]
@@ -45,17 +51,11 @@ namespace ZoneInApp.API
             return Ok(posts);
         }
 
-        //// GET: api/post/getvetposts
-        //[HttpGet]
-        //[Route("getrecommendationposts")]
-        //public IActionResult GetVetPosts()
-        //{
-        //    var userId = _userManager.GetUserId(this.User);
-        //    var posts = _service.GetVetPosts(userId);
-        //    return Ok(posts);
-        //}
-
         // GET api/post/5
+        /// <summary>
+        /// Get all replies pertaining to the selected post
+        /// </summary>
+        /// <param name="id"></param>
         [HttpGet("{id}")]
         [Authorize]
         public IActionResult GetPost(int id)
@@ -65,6 +65,10 @@ namespace ZoneInApp.API
         }
 
         // POST api/post
+        /// <summary>
+        /// Create or Edit a post
+        /// </summary>
+        /// <param name="post"></param>
         [HttpPost]
         [Authorize]
         public IActionResult Post([FromBody]Post post)
@@ -84,6 +88,11 @@ namespace ZoneInApp.API
         }
 
         // PUT api/values/5
+        /// <summary>
+        /// Update the count when the "Thanks" button is clicked
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="thankValue"></param>
         [HttpPut("{id}")]
         [Authorize]
         public IActionResult Put(int id, [FromBody]int thankValue)
@@ -93,6 +102,10 @@ namespace ZoneInApp.API
         }
 
         // DELETE api/post/5
+        /// <summary>
+        /// Delete a post
+        /// </summary>
+        /// <param name="id"></param>
         [HttpDelete("{id}")]
         [Authorize]
         public IActionResult Delete(int id)

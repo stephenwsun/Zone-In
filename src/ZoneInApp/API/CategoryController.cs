@@ -28,6 +28,9 @@ namespace ZoneInApp.API
 
 
         // GET: api/category
+        /// <summary>
+        /// Gets all categories from all neighborhoods
+        /// </summary>
         [HttpGet]
         [Authorize]
         public IActionResult Get()
@@ -38,6 +41,10 @@ namespace ZoneInApp.API
 
 
         // GET api/category/getcategoryrecommendations
+        /// <summary>
+        /// Gets all businesses from the user's neighborhood pertaining to the selected category
+        /// </summary>
+        /// <param name="id"></param>
         [HttpGet]
         [Route("getCategoryRecommendations")]
         [Authorize]
@@ -50,6 +57,10 @@ namespace ZoneInApp.API
 
 
         // POST api/category
+        /// <summary>
+        /// ADMIN ONLY: Saves a business to the neighborhood under the selected category
+        /// </summary>
+        /// <param name="category"></param>
         [HttpPost]
         [Authorize(Policy = "AdminOnly")]
         public IActionResult Post([FromBody]Category category)
@@ -66,13 +77,11 @@ namespace ZoneInApp.API
             }
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
         // DELETE api/category/5
+        /// <summary>
+        /// ADMIN ONLY: To delete a category and all businesses underneath it
+        /// </summary>
+        /// <param name="id"></param>
         [HttpDelete("{id}")]
         [Authorize(Policy = "AdminOnly")]
         public IActionResult Delete(int id)

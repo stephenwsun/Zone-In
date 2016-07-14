@@ -25,6 +25,9 @@ namespace ZoneInApp.API
         }
 
         // GET: api/values
+        /// <summary>
+        /// ADMIN ONLY: get all replies across all neighborhoods
+        /// </summary>
         [HttpGet]
         [Authorize(Policy = "AdminOnly")]
         public IActionResult Get()
@@ -32,15 +35,12 @@ namespace ZoneInApp.API
             return Ok();
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        [Authorize]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST api/values
+        /// <summary>
+        /// Create or Edit a reply associated with the selected post
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="reply"></param>
         [HttpPost("{id}")]
         [Authorize]
         public IActionResult Post(int id, [FromBody]Reply reply)
@@ -57,18 +57,6 @@ namespace ZoneInApp.API
                 _service.SaveReply(id, reply);
                 return Ok();
             }
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

@@ -17,9 +17,6 @@ namespace ZoneInApp.Models
         public string Biography { get; set; }
         public string Interests { get; set; }
         public string Skills { get; set; }
-        public string Phone { get; set; }       
-        //public ICollection<Post> Posts { get; set; }
-        //public ICollection<Event> Events { get; set; }
-        //public ICollection<PrivateMessage> PrivateMessages { get; set; }
+        public string Phone { get; set; }
     }
 }

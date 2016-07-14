@@ -25,7 +25,10 @@ namespace ZoneInApp.API
         }
 
 
-        // GET api/recommendations/getallrecommendations. For Admin
+        // GET api/recommendations/getallrecommendations
+        /// <summary>
+        /// ADMIN ONLY: Get all recommendations across all neighborhoods across all categories
+        /// </summary>
         [HttpGet]
         [Authorize(Policy = "AdminOnly")]
         public IActionResult Get()
@@ -35,8 +38,10 @@ namespace ZoneInApp.API
         }
 
 
-        // GET api/recommendations/getrecommendations. 
-        // GET all recommendations pertaining to the logged in user's neighborhood
+        // GET api/recommendations/getrecommendations
+        /// <summary>
+        /// GET all recommendations pertaining to the logged in user's neighborhood
+        /// </summary>
         [HttpGet]
         [Route("getrecommendations")]
         [Authorize]
@@ -49,6 +54,10 @@ namespace ZoneInApp.API
 
 
         // GET api/recommendation/5
+        /// <summary>
+        /// Get a detailed info about the recommendation
+        /// </summary>
+        /// <param name="id"></param>
         [HttpGet("{id}")]
         [Authorize]
         public IActionResult Get(int id)
@@ -59,6 +68,11 @@ namespace ZoneInApp.API
 
 
         // POST api/recommendation
+        /// <summary>
+        /// Create or Edit a recommendation
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="recommendation"></param>
         [HttpPost("{id}")]
         [Authorize]
         public IActionResult Post(int id, [FromBody]Recommendation recommendation)
@@ -80,6 +94,11 @@ namespace ZoneInApp.API
         }
 
         // PUT api/values/5
+        /// <summary>
+        /// Update the count on the Recommend button
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="recommendationValue"></param>
         [HttpPut("{id}")]
         [Authorize]
         public IActionResult Put(int id, [FromBody]int recommendationValue)
@@ -89,6 +108,10 @@ namespace ZoneInApp.API
         }
 
         // DELETE api/values/5
+        /// <summary>
+        /// ADMIN ONLY: delete a recommendation
+        /// </summary>
+        /// <param name="id"></param>
         [HttpDelete("{id}")]
         [Authorize(Policy = "AdminOnly")]
         public IActionResult Delete(int id)
